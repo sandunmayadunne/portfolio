@@ -306,106 +306,120 @@ const certificates = [
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Dashboard",
+    title: "ClayBricks App",
     description:
-      "A responsive admin dashboard for e-commerce analytics with interactive charts and data.",
+      " A comprehensive mobile application for buying and selling clay bricks, connecting builders with suppliers through an intuitive e-commerce platform.",
     thumbnail:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "./res/projects/ClayBricks/ClayBrickLogo.png",
     screenshots: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1115&q=80",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "./res/projects/ClayBricks/1.png",
+      "./res/projects/ClayBricks/2.png",
+      "./res/projects/ClayBricks/3.png",
+      "./res/projects/ClayBricks/4.png",
+      "./res/projects/ClayBricks/5.png",
+      "./res/projects/ClayBricks/6.png",
+      "./res/projects/ClayBricks/7.png",
+      "./res/projects/ClayBricks/8.png",
+      "./res/projects/ClayBricks/9.png",
+      "./res/projects/ClayBricks/10.png",
+      "./res/projects/ClayBricks/12.png",
+      "./res/projects/ClayBricks/13.png",
+      "./res/projects/ClayBricks/14.png",
+      "./res/projects/ClayBricks/15.png",
+      "./res/projects/ClayBricks/16.png",
+      "./res/projects/ClayBricks/18.png",
+      "./res/projects/ClayBricks/19.png",
     ],
-    technologies: ["React", "Chart.js", "Node.js", "MongoDB"],
+    technologies: ["Java", "Android studio", "Firebase", "SQLite"],
     link: "#",
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/sandunmayadunne/ClayBricks.git",
   },
-  {
-    id: 2,
-    title: "Travel Blog Platform",
-    description:
-      "A full-featured travel blog with user authentication, photo galleries, and interactive maps.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1335&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1335&q=80",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    ],
-    technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
-    link: "#",
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    id: 3,
-    title: "Fitness Tracker App",
-    description:
-      "A mobile-friendly fitness application with workout plans, progress tracking, and social features.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1571019614245-c6e3f4b7b533?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    ],
-    technologies: ["React Native", "Firebase", "Redux", "Chart.js"],
-    link: "#",
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    id: 4,
-    title: "Task Management System",
-    description:
-      "A collaborative task management system with real-time updates and team collaboration features.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1115&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    ],
-    technologies: ["Vue.js", "Socket.io", "Express.js", "MongoDB"],
-    link: "#",
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    id: 5,
-    title: "Weather Forecast App",
-    description:
-      "A beautiful weather application with detailed forecasts, maps, and location-based services.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1492011221367-f47e3ccd77a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    ],
-    technologies: ["React", "Weather API", "Chart.js", "Geolocation"],
-    link: "#",
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    id: 6,
-    title: "Recipe Sharing Platform",
-    description:
-      "A community-driven recipe sharing platform with video tutorials and user ratings.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    ],
-    technologies: ["Next.js", "Firebase", "Cloud Storage", "Tailwind CSS"],
-    link: "#",
-    demoLink: "#",
-    githubLink: "#",
-  },
+//   {
+//     id: 2,
+//     title: "Travel Blog Platform",
+//     description:
+//       "A full-featured travel blog with user authentication, photo galleries, and interactive maps.",
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1335&q=80",
+//     screenshots: [
+//       "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1335&q=80",
+//       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     ],
+//     technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
+//     link: "#",
+//     demoLink: "#",
+//     githubLink: "#",
+//   },
+//   {
+//     id: 3,
+//     title: "Fitness Tracker App",
+//     description:
+//       "A mobile-friendly fitness application with workout plans, progress tracking, and social features.",
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     screenshots: [
+//       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1571019614245-c6e3f4b7b533?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     ],
+//     technologies: ["React Native", "Firebase", "Redux", "Chart.js"],
+//     link: "#",
+//     demoLink: "#",
+//     githubLink: "#",
+//   },
+//   {
+//     id: 4,
+//     title: "Task Management System",
+//     description:
+//       "A collaborative task management system with real-time updates and team collaboration features.",
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     screenshots: [
+//       "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1115&q=80",
+//       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     ],
+//     technologies: ["Vue.js", "Socket.io", "Express.js", "MongoDB"],
+//     link: "#",
+//     demoLink: "#",
+//     githubLink: "#",
+//   },
+//   {
+//     id: 5,
+//     title: "Weather Forecast App",
+//     description:
+//       "A beautiful weather application with detailed forecasts, maps, and location-based services.",
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     screenshots: [
+//       "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1492011221367-f47e3ccd77a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     ],
+//     technologies: ["React", "Weather API", "Chart.js", "Geolocation"],
+//     link: "#",
+//     demoLink: "#",
+//     githubLink: "#",
+//   },
+//   {
+//     id: 6,
+//     title: "Recipe Sharing Platform",
+//     description:
+//       "A community-driven recipe sharing platform with video tutorials and user ratings.",
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     screenshots: [
+//       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//       "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+//     ],
+//     technologies: ["Next.js", "Firebase", "Cloud Storage", "Tailwind CSS"],
+//     link: "#",
+//     demoLink: "#",
+//     githubLink: "#",
+//   },
 ];
 
 // Function to render skills with horizontal scroll
