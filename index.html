@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rusindu Sandun Mayadunne - Portfolio</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Loading Animation -->
+    <div class="loader-wrapper" id="loader">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <div class="header-left">
+          <div class="theme-toggle" id="themeToggle">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <div class="toggle-circle"></div>
+          </div>
+          <a class="logo" href="#">RSM</a>
+        </div>
+
+        <!-- View All Certificates button in header -->
+        <button class="header-btn" id="viewAllCertificatesBtn">
+          <i class="fas fa-certificate"></i> View All Certificates
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+      <main>
+        <div class="main-grid">
+          <!-- Left Profile Section -->
+          <section class="profile-section">
+            <img
+              src="res/my_profile.jpg"
+              alt="Rusindu Sandun Mayadunne"
+              class="profile-img"
+            />
+            <h1 class="profile-name">Rusindu Sandun Mayadunne</h1>
+            <p class="profile-title">
+              Software Engineer Graduate (Almost Done) | Internship Seeker
+            </p>
+
+            <!-- NEW: Profile Buttons -->
+            <div class="profile-buttons">
+              <button class="profile-btn contact-btn" id="contactMeBtn">
+                <i class="fas fa-comment-dots"></i> Contact Me
+              </button>
+              <button class="profile-btn education-btn" id="viewEducationBtn">
+                <i class="fas fa-graduation-cap"></i> View My Education
+              </button>
+            </div>
+
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h3>Email</h3>
+                  <p>sandunmayadunne2003@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h3>Phone</h3>
+                  <p>+94 71 467 1640</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h3>Address</h3>
+                  <p>Embilipitiya, Sri Lanka</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Right Content Section -->
+          <section class="content-section">
+            <h2 class="section-title scroll-animate">About Me</h2>
+            <div class="about-text scroll-animate">
+              <p>
+                Hello! I'm Rusindu Sandun Mayadunne, As a recent graduate with a Bachelor's degree in Software Engineering, I have developed a solid foundation in software development principles and web technologies. I am enthusiastic about applying my academic knowledge to practical, real-world projects.
+              </p>
+              <p>
+                My academic journey has equipped me with problem-solving skills, attention to detail, and the ability to quickly adapt to new technologies. I am particularly interested in software development and eager to contribute to meaningful projects while continuing to learn and grow professionally.
+              </p>
+
+              <div class="about-skills">
+                    <h4>Key Strengths:</h4>
+                    <ul class="strengths-list">
+                        <li><strong>Proficient</strong> in applying software engineering principles and design patterns</li>
+                        <li><strong>Experienced</strong> in the full development lifecycle, from requirements to deployment</li>
+                        <li><strong>Excellent</strong> problem-solving and analytical skills</li>
+                        <li><strong>Quick learner</strong> with ability to adapt to new technologies</li>
+                        <li><strong>Detail-oriented</strong> with strong collaborative skills</li>
+                    </ul>
+                </div>
+                
+                <div class="about-cta">
+                    <p>I am currently seeking opportunities to contribute to innovative projects and grow as a software engineer.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title scroll-animate">My Skills</h2>
+            <div class="skills-container scroll-animate" id="skillsContainer">
+              <!-- Skills will be loaded here by JavaScript -->
+            </div>
+
+            <h2 class="section-title scroll-animate">My Projects</h2>
+            <div class="projects-grid scroll-animate" id="projectsGrid">
+              <!-- Projects will be loaded here by JavaScript -->
+            </div>
+
+            <div class="view-all-projects scroll-animate">
+              <button class="view-all-btn" id="viewAllBtn">
+                <i class="fas fa-eye"></i> View All Projects
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Rusindu Sandun Mayadunne. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- NEW: Contact Me Modal -->
+    <div class="modal-overlay" id="contactModal">
+      <div class="contact-modal">
+        <div class="modal-header">
+          <h2>Contact Me</h2>
+          <button class="close-modal" id="closeContactModal">&times;</button>
+        </div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="contactName"
+              ><i class="fas fa-user"></i> Your Name</label
+            >
+            <input
+              type="text"
+              id="contactName"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage"
+              ><i class="fas fa-envelope"></i> Your Message</label
+            >
+            <textarea
+              id="contactMessage"
+              placeholder="Enter your message here..."
+              required
+            ></textarea>
+          </div>
+          <button class="whatsapp-send-btn" id="sendWhatsAppBtn">
+            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+          </button>
+          <p
+            style="
+              margin-top: 15px;
+              font-size: 12px;
+              color: var(--text-color);
+              opacity: 0.7;
+              text-align: center;
+            "
+          >
+            <i class="fas fa-info-circle"></i> This will open WhatsApp with your
+            message to my number (0714671640)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW: Education Modal -->
+    <div class="modal-overlay" id="educationModal">
+      <div class="education-modal">
+        <div class="modal-header">
+          <h2>My Education</h2>
+          <button class="close-modal" id="closeEducationModal">&times;</button>
+        </div>
+        <div class="education-content">
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">
+                  Bachelor of Science in Software engineering
+                </h3>
+                <div class="education-institution">
+                  <i class="fas fa-university"></i>
+                  <span>Birmingham City University</span>
+                </div>
+              </div>
+              <span class="education-date">2022 - 2026</span>
+            </div>
+            <ul class="education-description">
+              <li>Data Structures & Algorithms</li>
+              <li>Web Development</li>
+              <li>Database Systems</li>
+              <li>Business Component Development</li>
+              <li>Object-Oriented Programming</li>
+              <li>Computer Hardware and Networks</li>
+              <li>Cyber Law</li>
+              <li>Object Oriented Design Patterns</li>
+              <li>Mobile Application Development</li>
+              <li>Game Development</li>
+              <li>Electronics</li>
+            </ul>
+          </div>
+
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">AWS Educate</h3>
+                <div class="education-institution">
+                  <span>Amazon Web Services Training and Certification</span>
+                </div>
+              </div>
+              <span class="education-date">2025</span>
+            </div>
+            <ul class="education-description">
+              <li style="cursor: pointer">
+                <a
+                  style="text-decoration: none; color: inherit"
+                  href="https://www.credly.com/badges/950d8c81-bf2a-48d0-bdaf-0af2bf93e51c/public_url"
+                  >Educate Introduction to Cloud 101</a
+                >
+              </li>
+              <li style="cursor: pointer">
+                <a
+                  style="text-decoration: none; color: inherit"
+                  href="https://www.credly.com/badges/3277cc86-ecc5-4d3f-88d4-d1ecfa4f5583/public_url"
+                  >AWS Educate Getting Started with Storage</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">CoDeKu DevOps Academy</h3>
+                <div class="education-institution">
+                  <span>Focus: Cetifications Of DevOps</span>
+                </div>
+              </div>
+              <span class="education-date">2025</span>
+            </div>
+            <ul class="education-description">
+              <li style="cursor: pointer">
+                <a
+                  style="text-decoration: none; color: inherit"
+                  href="https://www.linkedin.com/posts/sandunmayadunne_devops-containerization-docker-activity-7346745580922073088-luuv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRGZTYBbWPoAZsTjcUZHVSGVdloPMxKcBg"
+                  >Introduction to Containerization</a
+                >
+              </li>
+              <li style="cursor: pointer">
+                <a
+                  style="text-decoration: none; color: inherit"
+                  href="https://www.linkedin.com/posts/sandunmayadunne_cloudcomputing-aws-devops-activity-7334305629571792897--5Vr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRGZTYBbWPoAZsTjcUZHVSGVdloPMxKcBg"
+                  >Cloud Computing for Absolute Beginners</a
+                >
+              </li>
+              <li style="cursor: pointer">
+                <a
+                  style="text-decoration: none; color: inherit"
+                  href="https://www.linkedin.com/posts/sandunmayadunne_git-github-git-activity-7336054486970322945-4T9N?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRGZTYBbWPoAZsTjcUZHVSGVdloPMxKcBg"
+                  >Absolute beginner (zero) to expert (hero) in using Git and
+                  version control systems (VCS)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Screenshot Carousel Modal -->
+    <div class="project-modal-overlay" id="projectCarouselModal">
+      <div class="project-carousel-modal">
+        <div class="carousel-header">
+          <h2 id="carouselProjectTitle">Project Title</h2>
+          <button class="close-project-modal" id="closeProjectModal">
+            &times;
+          </button>
+        </div>
+
+        <div class="carousel-container">
+          <div class="carousel-slides" id="carouselSlides">
+            <!-- Carousel slides will be added dynamically -->
+          </div>
+
+          <button class="carousel-nav carousel-prev" id="carouselPrev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav carousel-next" id="carouselNext">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots">
+          <!-- Dots will be added dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Modal (All Projects) -->
+    <div class="modal-overlay" id="projectsModal">
+      <div class="projects-modal">
+        <div class="modal-header">
+          <h2>All Projects</h2>
+          <button class="close-modal" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-projects-grid" id="modalProjectsGrid">
+          <!-- All projects will be loaded here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- All Certificates Modal -->
+    <div class="modal-overlay" id="allCertificatesModal">
+      <div class="certificates-modal">
+        <div class="modal-header">
+          <h2>All Certificates</h2>
+          <button class="close-modal" id="closeAllCertificatesModal">
+            &times;
+          </button>
+        </div>
+        <div class="modal-certificates-grid" id="modalCertificatesGrid">
+          <!-- All certificates will be loaded here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+   <!-- Certificate Detail Modal -->
+<div class="certificate-modal-overlay" id="certificateDetailModal">
+  <div class="certificate-detail-modal">
+    <div class="certificate-detail-header">
+      <h2 id="certificateDetailTitle">Certificate Title</h2>
+      <button class="close-certificate-detail" id="closeCertificateDetail">
+        &times;
+      </button>
+    </div>
+    <div class="certificate-detail-body">
+      <img
+        id="certificateDetailImage"
+        src=""
+        alt="Certificate"
+        class="certificate-detail-img"
+      />
+      <div class="certificate-detail-info">
+        <div class="certificate-detail-item">
+          <i class="fas fa-university"></i>
+          <span id="certificateDetailIssuer">Issuing Organization</span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
