@@ -1926,7 +1926,7 @@ footer {
 @media (max-width: 900px) {
   .main-grid {
     grid-template-columns: 1fr;
-    margin-top: 70px;
+    margin-top: 160px;
   }
 
   .profile-section {

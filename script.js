@@ -618,6 +618,7 @@ function renderProjects(projectsToRender, containerId, isModal = false) {
 }
 
 // Project Carousel Variables
+// Carousel Variables
 const projectCarouselModal = document.getElementById("projectCarouselModal");
 const closeProjectModal = document.getElementById("closeProjectModal");
 const carouselSlides = document.getElementById("carouselSlides");
@@ -632,107 +633,162 @@ let autoSlideInterval = null;
 
 // Function to open project carousel
 function openProjectCarousel(projectId) {
-  const project = projects.find((p) => p.id === projectId);
-  if (!project) return;
+    const project = projects.find((p) => p.id === projectId);
+    if (!project) return;
 
-  currentProjectId = projectId;
-  currentSlideIndex = 0;
-  carouselProjectTitle.textContent = project.title;
+    currentProjectId = projectId;
+    currentSlideIndex = 0;
+    carouselProjectTitle.textContent = project.title;
 
-  // Clear existing slides and dots
-  carouselSlides.innerHTML = "";
-  carouselDots.innerHTML = "";
+    // Clear existing slides and dots
+    carouselSlides.innerHTML = "";
+    carouselDots.innerHTML = "";
 
-  // Add slides
-  project.screenshots.forEach((screenshot, index) => {
-    const slide = document.createElement("div");
-    slide.className = "carousel-slide";
-    slide.innerHTML = `
-            <img src="${screenshot}" alt="${project.title} - Screenshot ${
-      index + 1
-    }">
-            <div class="carousel-caption">Screenshot ${index + 1} of ${
-      project.screenshots.length
-    }</div>
-          `;
-    carouselSlides.appendChild(slide);
+    // Add slides
+    project.screenshots.forEach((screenshot, index) => {
+        const slide = document.createElement("div");
+        slide.className = "carousel-slide";
+        slide.innerHTML = `
+            <img src="${screenshot}" alt="${project.title} - Screenshot ${index + 1}" loading="lazy">
+            <div class="carousel-caption">Screenshot ${index + 1} of ${project.screenshots.length}</div>
+        `;
+        carouselSlides.appendChild(slide);
 
-    // Add dot
-    const dot = document.createElement("button");
-    dot.className = `carousel-dot ${index === 0 ? "active" : ""}`;
-    dot.setAttribute("data-slide", index);
-    dot.addEventListener("click", () => goToSlide(index));
-    carouselDots.appendChild(dot);
-  });
+        // Add dot
+        const dot = document.createElement("button");
+        dot.className = `carousel-dot ${index === 0 ? "active" : ""}`;
+        dot.setAttribute("data-slide", index);
+        dot.addEventListener("click", () => goToSlide(index));
+        carouselDots.appendChild(dot);
+    });
 
-  // Update carousel position
-  updateCarousel();
+    // Update carousel position
+    updateCarousel();
 
-  // Open modal
-  projectCarouselModal.classList.add("active");
-  document.body.style.overflow = "hidden";
+    // Open modal
+    projectCarouselModal.classList.add("active");
+    document.body.style.overflow = "hidden";
 
-  // Start auto slide
-  startAutoSlide();
+    // Start auto slide
+    startAutoSlide();
 }
 
 // Function to update carousel position
 function updateCarousel() {
-  carouselSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    if (carouselSlides) {
+        carouselSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    }
 
-  // Update active dot
-  document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
-    dot.classList.toggle("active", index === currentSlideIndex);
-  });
+    // Update active dot
+    document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentSlideIndex);
+    });
 }
 
 // Function to go to specific slide
 function goToSlide(index) {
-  const project = projects.find((p) => p.id === currentProjectId);
-  if (!project) return;
+    const project = projects.find((p) => p.id === currentProjectId);
+    if (!project) return;
 
-  currentSlideIndex = index;
-  if (currentSlideIndex < 0) {
-    currentSlideIndex = project.screenshots.length - 1;
-  } else if (currentSlideIndex >= project.screenshots.length) {
-    currentSlideIndex = 0;
-  }
+    currentSlideIndex = index;
+    if (currentSlideIndex < 0) {
+        currentSlideIndex = project.screenshots.length - 1;
+    } else if (currentSlideIndex >= project.screenshots.length) {
+        currentSlideIndex = 0;
+    }
 
-  updateCarousel();
-  resetAutoSlide();
+    updateCarousel();
+    resetAutoSlide();
 }
 
 // Function to go to next slide
 function nextSlide() {
-  const project = projects.find((p) => p.id === currentProjectId);
-  if (!project) return;
+    const project = projects.find((p) => p.id === currentProjectId);
+    if (!project) return;
 
-  currentSlideIndex = (currentSlideIndex + 1) % project.screenshots.length;
-  updateCarousel();
+    currentSlideIndex = (currentSlideIndex + 1) % project.screenshots.length;
+    updateCarousel();
 }
 
 // Function to go to previous slide
 function prevSlide() {
-  const project = projects.find((p) => p.id === currentProjectId);
-  if (!project) return;
+    const project = projects.find((p) => p.id === currentProjectId);
+    if (!project) return;
 
-  currentSlideIndex =
-    (currentSlideIndex - 1 + project.screenshots.length) %
-    project.screenshots.length;
-  updateCarousel();
+    currentSlideIndex = (currentSlideIndex - 1 + project.screenshots.length) % project.screenshots.length;
+    updateCarousel();
 }
 
 // Function to start auto slide
 function startAutoSlide() {
-  if (autoSlideInterval) clearInterval(autoSlideInterval);
-  autoSlideInterval = setInterval(nextSlide, 4000);
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextSlide, 4000);
 }
 
 // Function to reset auto slide timer
 function resetAutoSlide() {
-  if (autoSlideInterval) clearInterval(autoSlideInterval);
-  startAutoSlide();
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    startAutoSlide();
 }
+
+// Event listeners for carousel navigation
+carouselPrev.addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+});
+
+carouselNext.addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+// Close project carousel modal
+closeProjectModal.addEventListener("click", () => {
+    projectCarouselModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+    
+    // Clear auto slide interval
+    if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+    }
+});
+
+// Close carousel when clicking outside
+projectCarouselModal.addEventListener("click", (e) => {
+    if (e.target === projectCarouselModal) {
+        projectCarouselModal.classList.remove("active");
+        document.body.style.overflow = "auto";
+        
+        // Clear auto slide interval
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    }
+});
+
+// Keyboard navigation for carousel
+document.addEventListener("keydown", (e) => {
+    if (!projectCarouselModal.classList.contains("active")) return;
+
+    if (e.key === "ArrowLeft") {
+        prevSlide();
+        resetAutoSlide();
+    } else if (e.key === "ArrowRight") {
+        nextSlide();
+        resetAutoSlide();
+    } else if (e.key === "Escape") {
+        projectCarouselModal.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        // Clear auto slide interval
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    }
+});
 
 // Certificate Detail Modal Variables
 const certificateDetailModal = document.getElementById(
