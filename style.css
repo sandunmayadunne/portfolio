@@ -714,18 +714,18 @@ header {
   text-transform: uppercase;
 }
 
-.horizontal-skill-level.beginner {
-  background: rgba(255, 107, 107, 0.1);
-  color: #ff6b6b;
+.horizontal-skill-level.basic {
+  background: rgba(108, 99, 255, 0.15);
+  color: #f83c3c;
 }
 
 .horizontal-skill-level.intermediate {
-  background: rgba(78, 205, 196, 0.1);
+  background: rgba(78, 205, 196, 0.15);
   color: #4ecdc4;
 }
 
 .horizontal-skill-level.advanced {
-  background: rgba(108, 99, 255, 0.1);
+  background: rgba(108, 99, 255, 0.15);
   color: #6c63ff;
 }
 
