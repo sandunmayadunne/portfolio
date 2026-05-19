@@ -1,11 +1,25 @@
-// Loading animation
+// Loading animation with progress counter
 window.addEventListener("load", function () {
   const loader = document.getElementById("loader");
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    loader.style.visibility = "hidden";
-  }, 800);
+  const percentEl = loader?.querySelector(".loader-percent");
+  if (!loader) return;
+
+  // Animate percentage from 0 to 100
+  let count = 0;
+  const interval = setInterval(() => {
+    count++;
+    if (percentEl) percentEl.textContent = count + "%";
+    if (count >= 100) {
+      clearInterval(interval);
+      // Fade out loader after progress completes
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+      }, 300);
+    }
+  }, 12); // ~1200ms to reach 100
 });
+
 
 // Theme Toggle Functionality
 const themeToggle = document.getElementById("themeToggle");
@@ -22,7 +36,7 @@ if (savedTheme === "dark") {
   body.classList.add("dark-mode");
 }
 
-themeToggle.addEventListener("click", () => {
+themeToggle?.addEventListener("click", () => {
   body.classList.toggle("dark-mode");
   const isDarkMode = body.classList.contains("dark-mode");
   localStorage.setItem("theme", isDarkMode ? "dark" : "light");
@@ -48,8 +62,8 @@ const educationModal = document.getElementById("educationModal");
 const closeEducationModal = document.getElementById("closeEducationModal");
 
 // Open Contact Modal
-contactMeBtn.addEventListener("click", () => {
-  contactModal.classList.add("active");
+contactMeBtn?.addEventListener("click", () => {
+  contactModal?.classList.add("active");
   document.body.style.overflow = "hidden";
 
   // Add animation to form elements
@@ -60,32 +74,32 @@ contactMeBtn.addEventListener("click", () => {
 });
 
 // Open Education Modal
-viewEducationBtn.addEventListener("click", () => {
-  educationModal.classList.add("active");
+viewEducationBtn?.addEventListener("click", () => {
+  educationModal?.classList.add("active");
   document.body.style.overflow = "hidden";
 });
 
 // Close Contact Modal
-closeContactModal.addEventListener("click", () => {
-  contactModal.classList.remove("active");
+closeContactModal?.addEventListener("click", () => {
+  contactModal?.classList.remove("active");
   document.body.style.overflow = "auto";
 });
 
 // Close Education Modal
-closeEducationModal.addEventListener("click", () => {
-  educationModal.classList.remove("active");
+closeEducationModal?.addEventListener("click", () => {
+  educationModal?.classList.remove("active");
   document.body.style.overflow = "auto";
 });
 
 // Close modals when clicking outside
-contactModal.addEventListener("click", (e) => {
+contactModal?.addEventListener("click", (e) => {
   if (e.target === contactModal) {
     contactModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
 });
 
-educationModal.addEventListener("click", (e) => {
+educationModal?.addEventListener("click", (e) => {
   if (e.target === educationModal) {
     educationModal.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -93,16 +107,16 @@ educationModal.addEventListener("click", (e) => {
 });
 
 // WhatsApp Send Functionality - Fixed to always send to your number
-sendWhatsAppBtn.addEventListener("click", () => {
-  const name = contactNameInput.value.trim();
-  const message = contactMessageInput.value.trim();
+sendWhatsAppBtn?.addEventListener("click", () => {
+  const name = contactNameInput?.value.trim() || "";
+  const message = contactMessageInput?.value.trim() || "";
 
   if (!name || !message) {
     alert("Please enter both your name and message!");
     return;
   }
 
-  const phoneNumber = "94714671640"; // Your WhatsApp number in international format
+  const phoneNumber = "94770863647"; // Your WhatsApp number in international format
   const encodedMessage = encodeURIComponent(`Hi, I'm ${name}. ${message}`);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
@@ -110,155 +124,50 @@ sendWhatsAppBtn.addEventListener("click", () => {
   window.open(whatsappUrl, "_blank");
 
   // Close modal after sending
-  contactModal.classList.remove("active");
+  contactModal?.classList.remove("active");
   document.body.style.overflow = "auto";
 
   // Clear form
-  contactNameInput.value = "";
-  contactMessageInput.value = "";
+  if (contactNameInput) contactNameInput.value = "";
+  if (contactMessageInput) contactMessageInput.value = "";
 });
 
 // Enhanced Skills Data with levels and icons
 // Enhanced Skills Data with levels and icons
 const skillsData = {
   frontend: [
-    {
-      name: "HTML",
-      level: "advanced",
-      icon: "fab fa-html5",
-      color: "#e34f26",
-    },
-    {
-      name: "CSS",
-      level: "advanced",
-      icon: "fab fa-css3-alt",
-      color: "#1572b6",
-    },
-    {
-      name: "JavaScript",
-      level: "advanced",
-      icon: "fab fa-js",
-      color: "#f7df1e",
-    },
-    {
-      name: "React.js",
-      level: "intermediate",
-      icon: "fab fa-react",
-      color: "#61dafb",
-    },
-    {
-      name: "TypeScript",
-      level: "intermediate",
-      icon: "fas fa-code",
-      color: "#3178c6",
-    },
-    {
-      name: "Bootstrap",
-      level: "advanced",
-      icon: "fab fa-bootstrap",
-      color: "#7952b3",
-    },
+    { name: "HTML", level: "advanced", icon: "fab fa-html5", color: "#e34f26" },
+    { name: "CSS", level: "advanced", icon: "fab fa-css3-alt", color: "#1572b6" },
+    { name: "JavaScript", level: "advanced", icon: "fab fa-js", color: "#f7df1e" },
+    { name: "React", level: "intermediate", icon: "fab fa-react", color: "#61dafb" },
+    { name: "Bootstrap", level: "advanced", icon: "fab fa-bootstrap", color: "#7952b3" },
+    { name: "Flutter", level: "intermediate", icon: "fas fa-mobile-alt", color: "#02569B" },
+    { name: "Dart", level: "intermediate", icon: "fas fa-code", color: "#0175C2" }
   ],
   backend: [
-    {
-      name: "Java",
-      level: "intermediate",
-      icon: "fab fa-java",
-      color: "#007396",
-    },
-    {
-      name: "Node.js",
-      level: "basic",
-      icon: "fab fa-node-js",
-      color: "#339933",
-    },
-    {
-      name: "PHP",
-      level: "advanced",
-      icon: "fab fa-php",
-      color: "#777bb4",
-    },
-    {
-      name: "MySQL",
-      level: "advanced",
-      icon: "fas fa-database",
-      color: "#4479a1",
-    },
-    {
-      name: "MongoDB",
-      level: "basic",
-      icon: "fas fa-leaf",
-      color: "#47a248",
-    },
-    {
-      name: "Firebase",
-      level: "advanced",
-      icon: "fas fa-fire",
-      color: "#ffca28",
-    },
-    {
-      name: "Python",
-      level: "basic",
-      icon: "fab fa-python",
-      color: "#3776ab",
-    },
+    { name: "Java", level: "advanced", icon: "fab fa-java", color: "#007396" },
+    { name: "PHP", level: "advanced", icon: "fab fa-php", color: "#777bb4" },
+    { name: "Node.js", level: "intermediate", icon: "fab fa-node-js", color: "#339933" },
+    { name: "API Gateway", level: "intermediate", icon: "fas fa-network-wired", color: "#FF9900" }
+  ],
+  databases: [
+    { name: "MongoDB", level: "intermediate", icon: "fas fa-leaf", color: "#47a248" },
+    { name: "Firebase", level: "advanced", icon: "fas fa-fire", color: "#ffca28" },
+    { name: "MySQL", level: "advanced", icon: "fas fa-database", color: "#4479a1" },
+    { name: "NoSQL", level: "intermediate", icon: "fas fa-database", color: "#47a248" }
   ],
   tools: [
-    {
-      name: "Git",
-      level: "advanced",
-      icon: "fab fa-git-alt",
-      color: "#f05032",
-    },
-    {
-      name: "Git Hub",
-      level: "advanced",
-      icon: "fab fa-github",
-      color: "#000000ff",
-    },
-    {
-      name: "Android Studio",
-      level: "advanced",
-      icon: "fab fa-android",
-      color: "#10f568ff",
-    },
-    {
-      name: "IntelliJ IDEA",
-      level: "advanced",
-      icon: "fas fa-jet-fighter-up", // or "fas fa-code"
-      color: "#6c63ff",
-    },
-    {
-      name: "Unity",
-      level: "intermediate",
-      icon: "fas fa-gamepad",
-      color: "#000000ff",
-    },
-    {
-      name: "Responsive Design",
-      level: "advanced",
-      icon: "fas fa-mobile-alt",
-      color: "#6c63ff",
-    },
-    {
-      name: "UI/UX Design",
-      level: "intermediate",
-      icon: "fas fa-palette",
-      color: "#ff6584",
-    },
-    {
-      name: "Docker",
-      level: "basic",
-      icon: "fab fa-docker",
-      color: "#2496ed",
-    },
-    {
-      name: "VS Code",
-      level: "advanced",
-      icon: "fas fa-code",
-      color: "#007acc",
-    },
+    { name: "Git", level: "advanced", icon: "fab fa-git-alt", color: "#f05032" },
+    { name: "VS Code", level: "advanced", icon: "fas fa-code", color: "#007acc" },
+    { name: "Android Studio", level: "advanced", icon: "fab fa-android", color: "#3DDC84" },
+    { name: "IntelliJ IDEA", level: "advanced", icon: "fas fa-laptop-code", color: "#000000" },
+    { name: "Unity", level: "intermediate", icon: "fab fa-unity", color: "#000000" }
   ],
+  softSkills: [
+    { name: "Team Leadership", level: "advanced", icon: "fas fa-users", color: "#1D4ED8" },
+    { name: "Recruitment", level: "advanced", icon: "fas fa-user-plus", color: "#1D4ED8" },
+    { name: "Event Coordination", level: "advanced", icon: "fas fa-calendar-alt", color: "#1D4ED8" }
+  ]
 };
 
 // Enhanced Certificates Data
@@ -300,6 +209,12 @@ const certificates = [
     issuer: "AWS Educate",
     image: "./res/certificates/aws-educate-getting-started-with-storage-training-b.png",
   },
+  {
+    id: 7,
+    title: "The Complete Full-Stack Web Development Bootcamp (62 Hours)",
+    issuer: "Udemy – Dr. Angela Yu",
+    image: "./res/certificates/udemy-fullstack-bootcamp.jpg",
+  },
 ];
 
 // Projects Data
@@ -335,91 +250,6 @@ const projects = [
     demoLink: "#",
     githubLink: "https://github.com/sandunmayadunne/ClayBricks.git",
   },
-//   {
-//     id: 2,
-//     title: "Travel Blog Platform",
-//     description:
-//       "A full-featured travel blog with user authentication, photo galleries, and interactive maps.",
-//     thumbnail:
-//       "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1335&q=80",
-//     screenshots: [
-//       "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1335&q=80",
-//       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     ],
-//     technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
-//     link: "#",
-//     demoLink: "#",
-//     githubLink: "#",
-//   },
-//   {
-//     id: 3,
-//     title: "Fitness Tracker App",
-//     description:
-//       "A mobile-friendly fitness application with workout plans, progress tracking, and social features.",
-//     thumbnail:
-//       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     screenshots: [
-//       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1571019614245-c6e3f4b7b533?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     ],
-//     technologies: ["React Native", "Firebase", "Redux", "Chart.js"],
-//     link: "#",
-//     demoLink: "#",
-//     githubLink: "#",
-//   },
-//   {
-//     id: 4,
-//     title: "Task Management System",
-//     description:
-//       "A collaborative task management system with real-time updates and team collaboration features.",
-//     thumbnail:
-//       "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     screenshots: [
-//       "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1115&q=80",
-//       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     ],
-//     technologies: ["Vue.js", "Socket.io", "Express.js", "MongoDB"],
-//     link: "#",
-//     demoLink: "#",
-//     githubLink: "#",
-//   },
-//   {
-//     id: 5,
-//     title: "Weather Forecast App",
-//     description:
-//       "A beautiful weather application with detailed forecasts, maps, and location-based services.",
-//     thumbnail:
-//       "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     screenshots: [
-//       "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1492011221367-f47e3ccd77a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     ],
-//     technologies: ["React", "Weather API", "Chart.js", "Geolocation"],
-//     link: "#",
-//     demoLink: "#",
-//     githubLink: "#",
-//   },
-//   {
-//     id: 6,
-//     title: "Recipe Sharing Platform",
-//     description:
-//       "A community-driven recipe sharing platform with video tutorials and user ratings.",
-//     thumbnail:
-//       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     screenshots: [
-//       "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//       "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-//     ],
-//     technologies: ["Next.js", "Firebase", "Cloud Storage", "Tailwind CSS"],
-//     link: "#",
-//     demoLink: "#",
-//     githubLink: "#",
-//   },
 ];
 
 // Function to render skills with horizontal scroll
@@ -427,48 +257,26 @@ function renderSkills() {
   const skillsContainer = document.getElementById("skillsContainer");
   skillsContainer.innerHTML = "";
 
-  // Frontend Skills
-  const frontendCategory = document.createElement("div");
-  frontendCategory.className = "skill-category";
-  frontendCategory.innerHTML = `
-          <h3><i class="fas fa-code"></i> Frontend Development</h3>
-          <div class="horizontal-skills">
-            ${skillsData.frontend
-              .map(
-                (skill, index) => `
-                <div class="horizontal-skill-item" style="animation-delay: ${
-                  0.1 + index * 0.1
-                }s">
-                  <div class="horizontal-skill-icon" style="color: ${
-                    skill.color
-                  }">
-                    <i class="${skill.icon}"></i>
-                  </div>
-                  <div class="skill-details">
-                    <span class="horizontal-skill-name">${skill.name}</span>
-                    <span class="horizontal-skill-level ${skill.level}">${
-                  skill.level
-                }</span>
-                  </div>
-                </div>
-              `
-              )
-              .join("")}
-          </div>
-        `;
-  skillsContainer.appendChild(frontendCategory);
+  const categoryTitles = {
+    frontend: { title: "Frontend Development", icon: "fas fa-code" },
+    backend: { title: "Backend Development", icon: "fas fa-server" },
+    databases: { title: "Databases & Cloud", icon: "fas fa-database" },
+    tools: { title: "Tools & Platforms", icon: "fas fa-tools" },
+    softSkills: { title: "Soft Skills & Management", icon: "fas fa-users" }
+  };
 
-  // Backend Skills
-  const backendCategory = document.createElement("div");
-  backendCategory.className = "skill-category";
-  backendCategory.innerHTML = `
-          <h3><i class="fas fa-server"></i> Backend Development</h3>
+  Object.keys(skillsData).forEach((categoryKey, catIndex) => {
+    const categoryInfo = categoryTitles[categoryKey];
+    const categoryDiv = document.createElement("div");
+    categoryDiv.className = "skill-category";
+    categoryDiv.innerHTML = `
+          <h3><i class="${categoryInfo.icon}"></i> ${categoryInfo.title}</h3>
           <div class="horizontal-skills">
-            ${skillsData.backend
+            ${skillsData[categoryKey]
               .map(
                 (skill, index) => `
                 <div class="horizontal-skill-item" style="animation-delay: ${
-                  0.2 + index * 0.1
+                  (catIndex + 1) * 0.1 + index * 0.1
                 }s">
                   <div class="horizontal-skill-icon" style="color: ${
                     skill.color
@@ -487,43 +295,14 @@ function renderSkills() {
               .join("")}
           </div>
         `;
-  skillsContainer.appendChild(backendCategory);
-
-  // Tools & Others
-  const toolsCategory = document.createElement("div");
-  toolsCategory.className = "skill-category";
-  toolsCategory.innerHTML = `
-          <h3><i class="fas fa-tools"></i> Tools & Others</h3>
-          <div class="horizontal-skills">
-            ${skillsData.tools
-              .map(
-                (skill, index) => `
-                <div class="horizontal-skill-item" style="animation-delay: ${
-                  0.3 + index * 0.1
-                }s">
-                  <div class="horizontal-skill-icon" style="color: ${
-                    skill.color
-                  }">
-                    <i class="${skill.icon}"></i>
-                  </div>
-                  <div class="skill-details">
-                    <span class="horizontal-skill-name">${skill.name}</span>
-                    <span class="horizontal-skill-level ${skill.level}">${
-                  skill.level
-                }</span>
-                  </div>
-                </div>
-              `
-              )
-              .join("")}
-          </div>
-        `;
-  skillsContainer.appendChild(toolsCategory);
+    skillsContainer.appendChild(categoryDiv);
+  });
 }
 
 // Function to render certificates in modal (similar to projects)
 function renderCertificatesModal(certificatesArray) {
   const certificatesGrid = document.getElementById("modalCertificatesGrid");
+  if (!certificatesGrid) return;
   certificatesGrid.innerHTML = "";
 
   certificatesArray.forEach((certificate) => {
@@ -556,6 +335,7 @@ function renderCertificatesModal(certificatesArray) {
 // Function to render projects
 function renderProjects(projectsToRender, containerId, isModal = false) {
   const projectsGrid = document.getElementById(containerId);
+  if (!projectsGrid) return;
   projectsGrid.innerHTML = "";
 
   projectsToRender.forEach((project, index) => {
@@ -614,6 +394,16 @@ function renderProjects(projectsToRender, containerId, isModal = false) {
           `;
 
     projectsGrid.appendChild(projectCard);
+
+    // FIX: Add visible class to each card with a staggered delay
+    // Project cards have opacity:0 in CSS and need .visible class to show
+    if (!isModal) {
+      setTimeout(() => {
+        projectCard.classList.add("visible");
+      }, 100 + index * 150);
+    } else {
+      projectCard.classList.add("visible");
+    }
   });
 }
 
@@ -638,9 +428,12 @@ function openProjectCarousel(projectId) {
 
     currentProjectId = projectId;
     currentSlideIndex = 0;
-    carouselProjectTitle.textContent = project.title;
+    if (carouselProjectTitle) {
+      carouselProjectTitle.textContent = project.title;
+    }
 
     // Clear existing slides and dots
+    if (!carouselSlides || !carouselDots) return;
     carouselSlides.innerHTML = "";
     carouselDots.innerHTML = "";
 
@@ -666,7 +459,7 @@ function openProjectCarousel(projectId) {
     updateCarousel();
 
     // Open modal
-    projectCarouselModal.classList.add("active");
+    projectCarouselModal?.classList.add("active");
     document.body.style.overflow = "hidden";
 
     // Start auto slide
@@ -732,19 +525,19 @@ function resetAutoSlide() {
 }
 
 // Event listeners for carousel navigation
-carouselPrev.addEventListener("click", () => {
+carouselPrev?.addEventListener("click", () => {
     prevSlide();
     resetAutoSlide();
 });
 
-carouselNext.addEventListener("click", () => {
+carouselNext?.addEventListener("click", () => {
     nextSlide();
     resetAutoSlide();
 });
 
 // Close project carousel modal
-closeProjectModal.addEventListener("click", () => {
-    projectCarouselModal.classList.remove("active");
+closeProjectModal?.addEventListener("click", () => {
+    projectCarouselModal?.classList.remove("active");
     document.body.style.overflow = "auto";
     
     // Clear auto slide interval
@@ -755,7 +548,7 @@ closeProjectModal.addEventListener("click", () => {
 });
 
 // Close carousel when clicking outside
-projectCarouselModal.addEventListener("click", (e) => {
+projectCarouselModal?.addEventListener("click", (e) => {
     if (e.target === projectCarouselModal) {
         projectCarouselModal.classList.remove("active");
         document.body.style.overflow = "auto";
@@ -770,7 +563,7 @@ projectCarouselModal.addEventListener("click", (e) => {
 
 // Keyboard navigation for carousel
 document.addEventListener("keydown", (e) => {
-    if (!projectCarouselModal.classList.contains("active")) return;
+    if (!projectCarouselModal?.classList.contains("active")) return;
 
     if (e.key === "ArrowLeft") {
         prevSlide();
@@ -824,40 +617,28 @@ function openCertificateDetailModal(certificateId) {
   const certificate = certificates.find((c) => c.id === certificateId);
   if (!certificate) return;
 
-  certificateDetailTitle.textContent = certificate.title;
-  certificateDetailImage.src = certificate.image;
-  certificateDetailImage.alt = certificate.title;
-  certificateDetailIssuer.textContent = certificate.issuer || "Not specified";
+  if (certificateDetailTitle) certificateDetailTitle.textContent = certificate.title;
+  if (certificateDetailImage) {
+    certificateDetailImage.src = certificate.image;
+    certificateDetailImage.alt = certificate.title;
+  }
+  if (certificateDetailIssuer) certificateDetailIssuer.textContent = certificate.issuer || "Not specified";
   
-  certificateDetailModal.classList.add("active");
+  certificateDetailModal?.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 // Close certificate detail modal
-closeCertificateDetail.addEventListener("click", () => {
-  certificateDetailModal.classList.remove("active");
+closeCertificateDetail?.addEventListener("click", () => {
+  certificateDetailModal?.classList.remove("active");
   document.body.style.overflow = "auto";
 });
 
 // Close certificate detail modal when clicking outside
-certificateDetailModal.addEventListener("click", (e) => {
+certificateDetailModal?.addEventListener("click", (e) => {
   if (e.target === certificateDetailModal) {
     certificateDetailModal.classList.remove("active");
     document.body.style.overflow = "auto";
-  }
-});
-
-// Close project carousel modal when clicking outside
-projectCarouselModal.addEventListener("click", (e) => {
-  if (e.target === projectCarouselModal) {
-    projectCarouselModal.classList.remove("active");
-    document.body.style.overflow = "auto";
-
-    // Clear auto slide interval
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
-    }
   }
 });
 
@@ -923,28 +704,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Keyboard navigation for carousel
-document.addEventListener("keydown", (e) => {
-  if (!projectCarouselModal.classList.contains("active")) return;
-
-  if (e.key === "ArrowLeft") {
-    prevSlide();
-    resetAutoSlide();
-  } else if (e.key === "ArrowRight") {
-    nextSlide();
-    resetAutoSlide();
-  } else if (e.key === "Escape") {
-    projectCarouselModal.classList.remove("active");
-    document.body.style.overflow = "auto";
-
-    // Clear auto slide interval
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
-    }
-  }
-});
-
 // Modal Functionality
 const viewAllBtn = document.getElementById("viewAllBtn");
 const projectsModal = document.getElementById("projectsModal");
@@ -960,20 +719,20 @@ const closeAllCertificatesModal = document.getElementById(
 );
 
 // Open all certificates modal
-viewAllCertificatesBtn.addEventListener("click", () => {
+viewAllCertificatesBtn?.addEventListener("click", () => {
   renderCertificatesModal(certificates);
-  allCertificatesModal.classList.add("active");
+  allCertificatesModal?.classList.add("active");
   document.body.style.overflow = "hidden";
 });
 
 // Close all certificates modal
-closeAllCertificatesModal.addEventListener("click", () => {
-  allCertificatesModal.classList.remove("active");
+closeAllCertificatesModal?.addEventListener("click", () => {
+  allCertificatesModal?.classList.remove("active");
   document.body.style.overflow = "auto";
 });
 
 // Close all certificates modal when clicking outside
-allCertificatesModal.addEventListener("click", (e) => {
+allCertificatesModal?.addEventListener("click", (e) => {
   if (e.target === allCertificatesModal) {
     allCertificatesModal.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -981,20 +740,20 @@ allCertificatesModal.addEventListener("click", (e) => {
 });
 
 // Open projects modal
-viewAllBtn.addEventListener("click", () => {
+viewAllBtn?.addEventListener("click", () => {
   renderProjects(projects, "modalProjectsGrid", true);
-  projectsModal.classList.add("active");
+  projectsModal?.classList.add("active");
   document.body.style.overflow = "hidden";
 });
 
 // Close projects modal
-closeModal.addEventListener("click", () => {
-  projectsModal.classList.remove("active");
+closeModal?.addEventListener("click", () => {
+  projectsModal?.classList.remove("active");
   document.body.style.overflow = "auto";
 });
 
 // Close projects modal when clicking outside
-projectsModal.addEventListener("click", (e) => {
+projectsModal?.addEventListener("click", (e) => {
   if (e.target === projectsModal) {
     projectsModal.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -1004,19 +763,19 @@ projectsModal.addEventListener("click", (e) => {
 // Close modals with Escape key
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    if (projectsModal.classList.contains("active")) {
+    if (projectsModal?.classList.contains("active")) {
       projectsModal.classList.remove("active");
       document.body.style.overflow = "auto";
     }
-    if (allCertificatesModal.classList.contains("active")) {
+    if (allCertificatesModal?.classList.contains("active")) {
       allCertificatesModal.classList.remove("active");
       document.body.style.overflow = "auto";
     }
-    if (certificateDetailModal.classList.contains("active")) {
+    if (certificateDetailModal?.classList.contains("active")) {
       certificateDetailModal.classList.remove("active");
       document.body.style.overflow = "auto";
     }
-    if (projectCarouselModal.classList.contains("active")) {
+    if (projectCarouselModal?.classList.contains("active")) {
       projectCarouselModal.classList.remove("active");
       document.body.style.overflow = "auto";
       if (autoSlideInterval) {
@@ -1024,96 +783,94 @@ document.addEventListener("keydown", (e) => {
         autoSlideInterval = null;
       }
     }
-    if (contactModal.classList.contains("active")) {
+    if (contactModal?.classList.contains("active")) {
       contactModal.classList.remove("active");
       document.body.style.overflow = "auto";
     }
-    if (educationModal.classList.contains("active")) {
+    if (educationModal?.classList.contains("active")) {
       educationModal.classList.remove("active");
       document.body.style.overflow = "auto";
     }
   }
 });
 
-// Scroll Animation Functionality
-function checkScroll() {
-  const scrollAnimateElements = document.querySelectorAll(".scroll-animate");
-  const skillCategories = document.querySelectorAll(".skill-category");
-  const projectCards = document.querySelectorAll(".project-card");
-  const skillItems = document.querySelectorAll(".horizontal-skill-item");
-  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+// Scroll Animation using IntersectionObserver (Up & Down Repeatable)
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -50px 0px"
+};
 
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      
+      // If it's the skills container, animate the children with a stagger
+      if (entry.target.id === "skillsContainer") {
+        const skillItems = entry.target.querySelectorAll(".horizontal-skill-item");
+        skillItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add("visible");
+          }, index * 50);
+        });
+      }
+    } else {
+      entry.target.classList.remove("visible");
+      
+      // Reset children
+      if (entry.target.id === "skillsContainer") {
+        const skillItems = entry.target.querySelectorAll(".horizontal-skill-item");
+        skillItems.forEach((item) => item.classList.remove("visible"));
+      }
+    }
+  });
+}, observerOptions);
+
+// ScrollSpy Navigation & Scroll to Top
+window.addEventListener("scroll", () => {
   // Show/hide scroll to top button
-  if (window.scrollY > 300) {
-    scrollToTopBtn.classList.add("visible");
-  } else {
-    scrollToTopBtn.classList.remove("visible");
-  }
-
-  // Check scroll animate elements
-  scrollAnimateElements.forEach((section) => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (sectionTop < windowHeight * 0.85) {
-      section.classList.add("visible");
-    }
-  });
-
-  // Check skill categories
-  skillCategories.forEach((section) => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (sectionTop < windowHeight * 0.85) {
-      section.classList.add("visible");
-    }
-  });
-
-  // Check project cards
-  projectCards.forEach((section) => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (sectionTop < windowHeight * 0.85) {
-      section.classList.add("visible");
-    }
-  });
-
-  // Check skill items when skills container is visible
-  const skillsContainer = document.getElementById("skillsContainer");
-  if (skillsContainer) {
-    const skillsContainerTop = skillsContainer.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (skillsContainerTop < windowHeight * 0.85) {
-      skillItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.add("visible");
-        }, index * 100);
-      });
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  if (scrollToTopBtn) {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.classList.add("visible");
+    } else {
+      scrollToTopBtn.classList.remove("visible");
     }
   }
-}
 
-// Initialize scroll animations when page loads
-window.addEventListener("load", () => {
-  // Initial check
-  checkScroll();
+  // Header shrink/move effect
+  const header = document.querySelector("header");
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
 
-  // Check on scroll
-  window.addEventListener("scroll", checkScroll);
+  // ScrollSpy Logic
+  const sections = document.querySelectorAll("h2[id]");
+  const navLinks = document.querySelectorAll(".header-nav a");
+  let current = "";
 
-  // Check on resize
-  window.addEventListener("resize", checkScroll);
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop <= 250) { // Offset for header
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
 });
-
-// Force check after a small delay to ensure all elements are loaded
-setTimeout(checkScroll, 100);
 
 // Smooth scroll to top function
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-scrollToTopBtn.addEventListener("click", () => {
+scrollToTopBtn?.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth",
@@ -1124,7 +881,7 @@ scrollToTopBtn.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   renderSkills();
   renderProjects(projects.slice(0, 3), "projectsGrid");
-  renderProjects(projects, "modalProjectsGrid", true);
+  // Modal projects are rendered on demand when modal opens (no need to pre-render)
 
   // Add typing effect to profile title
   const profileTitle = document.querySelector(".profile-title");
@@ -1161,23 +918,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initialize skill categories animation
-  setTimeout(() => {
-    const skillCategories = document.querySelectorAll(".skill-category");
-    skillCategories.forEach((category, index) => {
-      setTimeout(() => {
-        category.style.opacity = "1";
-        category.style.transform = "translateY(0)";
-      }, 600 + index * 200);
-    });
-  }, 1000);
+  // Profile section is handled by CSS fadeIn animation (no JS transform needed)
 
-  // Initialize profile section animation
-  const profileSection = document.querySelector(".profile-section");
-  setTimeout(() => {
-    profileSection.style.opacity = "1";
-    profileSection.style.transform = "translateX(0) translateY(0)";
-  }, 500);
+  // Start observing scroll animations
+  const animatedElements = document.querySelectorAll('.scroll-animate, .skill-category, .experience-item, #skillsContainer');
+  animatedElements.forEach(el => {
+    if (scrollObserver) scrollObserver.observe(el);
+  });
 
-  // REMOVED: Bounce animation from buttons (removed as requested)
+
+});
+
+// Custom Mouse Cursor Animation
+const cursorDot = document.querySelector("[data-cursor-dot]");
+const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+window.addEventListener("mousemove", function (e) {
+  const posX = e.clientX;
+  const posY = e.clientY;
+
+  if (cursorDot) {
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+  }
+
+  if (cursorOutline && cursorOutline.animate) {
+    cursorOutline.animate({
+      left: `${posX}px`,
+      top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+  }
 });
