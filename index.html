@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="res/my_profile2.png">
-    <title>Rusindu Sandun Mayadunne - Portfolio</title>
+    <title>Rusindu Mayadunne - Portfolio</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
@@ -14,9 +19,44 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Loading Animation -->
+    <!-- Custom Mouse Cursor -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Premium Loading Animation -->
     <div class="loader-wrapper" id="loader">
-      <div class="loader"></div>
+      <!-- Floating background particles -->
+      <div class="loader-particles">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="loader-content">
+        <!-- Animated rings around logo -->
+        <div class="loader-rings">
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="ring ring-3"></div>
+
+          <!-- Center logo -->
+          <div class="loader-logo">
+            <span>RSM</span>
+          </div>
+        </div>
+
+        <!-- Name reveal text -->
+        <div class="loader-name">
+          <span class="loader-name-text">Rusindu Mayadunne</span>
+        </div>
+        <div class="loader-subtitle">Software Engineer &amp; Portfolio</div>
+
+        <!-- Progress bar -->
+        <div class="loader-progress-track">
+          <div class="loader-progress-bar"></div>
+        </div>
+        <div class="loader-percent">0%</div>
+      </div>
     </div>
 
     <!-- Header -->
@@ -30,6 +70,13 @@
           </div>
           <a class="logo" href="#">RSM</a>
         </div>
+
+        <nav class="header-nav">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+        </nav>
 
         <!-- View All Certificates button in header -->
         <button class="header-btn" id="viewAllCertificatesBtn">
@@ -46,12 +93,12 @@
           <section class="profile-section">
             <img
               src="res/my_profile2.png"
-              alt="Rusindu Sandun Mayadunne"
+              alt="Rusindu Mayadunne"
               class="profile-img"
             />
-            <h1 class="profile-name">Rusindu Sandun Mayadunne</h1>
+            <h1 class="profile-name">Rusindu Mayadunne</h1>
             <p class="profile-title">
-              Software Engineer Graduate (Almost Done) | Internship Seeker
+              Software Engineer & Junior Manager | BSc Graduate
             </p>
 
             <!-- NEW: Profile Buttons -->
@@ -81,7 +128,7 @@
                 </div>
                 <div>
                   <h3>Phone</h3>
-                  <p>+94 71 467 1640</p>
+                  <p>077-0863647</p>
                 </div>
               </div>
 
@@ -99,13 +146,13 @@
 
           <!-- Right Content Section -->
           <section class="content-section">
-            <h2 class="section-title scroll-animate">About Me</h2>
+            <h2 id="about" class="section-title scroll-animate">About Me</h2>
             <div class="about-text scroll-animate">
               <p>
-                Hello! I'm Rusindu Sandun Mayadunne, As a recent graduate with a Bachelor's degree in Software Engineering, I have developed a solid foundation in software development principles and web technologies. I am enthusiastic about applying my academic knowledge to practical, real-world projects.
+                Hello! I am a passionate Software Engineering graduate with a strong foundation in full-stack development, an expanding expertise in modern mobile frameworks (Flutter and Dart), and practical experience in team leadership and recruitment.
               </p>
               <p>
-                My academic journey has equipped me with problem-solving skills, attention to detail, and the ability to quickly adapt to new technologies. I am particularly interested in software development and eager to contribute to meaningful projects while continuing to learn and grow professionally.
+                I am eager to contribute to meaningful projects while continuing to learn and grow professionally. My academic journey has equipped me with problem-solving skills, attention to detail, and the ability to quickly adapt to new technologies.
               </p>
 
               <div class="about-skills">
@@ -124,12 +171,25 @@
                 </div>
             </div>
 
-            <h2 class="section-title scroll-animate">My Skills</h2>
+            <h2 id="experience" class="section-title scroll-animate">My Experience</h2>
+            <div class="experience-timeline scroll-animate" style="margin-bottom: 30px;">
+              <div class="experience-item" style="border-left: 3px solid var(--primary-color); padding-left: 20px; margin-bottom: 20px; position: relative;">
+                <div style="position: absolute; width: 15px; height: 15px; background: var(--primary-color); border-radius: 50%; left: -9px; top: 0;"></div>
+                <h3 style="color: var(--primary-color); margin-bottom: 5px;">Junior Manager</h3>
+                <p style="font-weight: bold; margin-bottom: 10px;">Managing student enrollment & operations</p>
+                <ul style="list-style-type: disc; margin-left: 20px; opacity: 0.9;">
+                  <li>Managed student enrollment targets and oversaw call center recruitment cycles with commission structures.</li>
+                  <li>Demonstrated practical experience in team leadership and recruitment.</li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 id="skills" class="section-title scroll-animate">My Skills</h2>
             <div class="skills-container scroll-animate" id="skillsContainer">
               <!-- Skills will be loaded here by JavaScript -->
             </div>
 
-            <h2 class="section-title scroll-animate">My Projects</h2>
+            <h2 id="projects" class="section-title scroll-animate">My Projects</h2>
             <div class="projects-grid scroll-animate" id="projectsGrid">
               <!-- Projects will be loaded here by JavaScript -->
             </div>
@@ -144,10 +204,10 @@
       </main>
 
       <footer>
-        <p>&copy; 2025 Rusindu Sandun Mayadunne. All rights reserved.</p>
+        <p>&copy; 2025 Rusindu Mayadunne. All rights reserved.</p>
         <div class="social-links">
-          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/sandunmayadunne" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/sandunmayadunne" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
           <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
           <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         </div>
@@ -196,7 +256,7 @@
             "
           >
             <i class="fas fa-info-circle"></i> This will open WhatsApp with your
-            message to my number (0714671640)
+            message to my number (0770863647)
           </p>
         </div>
       </div>
@@ -214,14 +274,14 @@
             <div class="education-header">
               <div>
                 <h3 class="education-title">
-                  Bachelor of Science in Software engineering
+                  Bachelor of Science in Software Engineering
                 </h3>
                 <div class="education-institution">
                   <i class="fas fa-university"></i>
                   <span>Birmingham City University</span>
                 </div>
               </div>
-              <span class="education-date">2022 - 2026</span>
+              <span class="education-date">Graduated 2026</span>
             </div>
             <ul class="education-description">
               <li>Data Structures & Algorithms</li>
@@ -261,6 +321,28 @@
                   style="text-decoration: none; color: inherit"
                   href="https://www.credly.com/badges/3277cc86-ecc5-4d3f-88d4-d1ecfa4f5583/public_url"
                   >AWS Educate Getting Started with Storage</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">Udemy – Dr. Angela Yu</h3>
+                <div class="education-institution">
+                  <span>Focus: Full-Stack Web Development</span>
+                </div>
+              </div>
+              <span class="education-date">May 2026</span>
+            </div>
+            <ul class="education-description">
+              <li style="cursor: pointer">
+                <a
+                  style="text-decoration: none; color: inherit"
+                  href="https://ude.my/UC-63ae556a-6f4a-424a-b0c8-9ce6f4041c6e"
+                  target="_blank"
+                  >The Complete Full-Stack Web Development Bootcamp (62 Hours)</a
                 >
               </li>
             </ul>
