@@ -215,6 +215,24 @@ const certificates = [
     issuer: "Udemy – Dr. Angela Yu",
     image: "./res/certificates/udemy-fullstack-bootcamp.jpg",
   },
+  {
+    id: 8,
+    title: "Learning Docker",
+    issuer: "LinkedIn Learning",
+    image: "./res/certificates/CertificateOfCompletion_Learning Docker.png",
+  },
+  {
+    id: 9,
+    title: "Software Development Life Cycle (SDLC)",
+    issuer: "LinkedIn Learning",
+    image: "./res/certificates/CertificateOfCompletion_Software Development Life Cycle SDLC.png",
+  },
+  {
+    id: 10,
+    title: "Professional Achievement Certificate",
+    issuer: "Credly / Vendor",
+    image: "./res/certificates/8a544f23-ba61-4118-bc5a-21af5aec8c49.webp",
+  }
 ];
 
 // Projects Data
@@ -250,6 +268,58 @@ const projects = [
     demoLink: "#",
     githubLink: "https://github.com/sandunmayadunne/ClayBricks.git",
   },
+  {
+    id: 2,
+    title: "Institute Management System",
+    description:
+      "A comprehensive attendance marking system designed to manage and track student attendance effectively within an educational institute.",
+    thumbnail:
+      "./res/projects/Institute Management System/logo_page.png",
+    screenshots: [
+      "./res/projects/Institute Management System/1.png",
+      "./res/projects/Institute Management System/2.png",
+      "./res/projects/Institute Management System/3.png",
+      "./res/projects/Institute Management System/4.png",
+      "./res/projects/Institute Management System/5.png",
+      "./res/projects/Institute Management System/6.png",
+      "./res/projects/Institute Management System/7.png",
+      "./res/projects/Institute Management System/8.png",
+      "./res/projects/Institute Management System/9.png",
+    ],
+    technologies: ["Dart", "Flutter"],
+    link: "https://institute-management-app-16131.web.app",
+    demoLink: "https://institute-management-app-16131.web.app",
+    githubLink: "https://github.com/sandunmayadunne/Institute_Management_System.git",
+  },
+  {
+    id: 3,
+    title: "EduSystem",
+    description:
+      "A modern educational platform built for interactive learning and content delivery.",
+    thumbnail:
+      "./res/projects/Lanka Edu System/logo.png",
+    screenshots: [
+      "./res/projects/Lanka Edu System/1.png",
+      "./res/projects/Lanka Edu System/2.png",
+      "./res/projects/Lanka Edu System/3.png",
+      "./res/projects/Lanka Edu System/4.png",
+      "./res/projects/Lanka Edu System/5.png",
+      "./res/projects/Lanka Edu System/6.png",
+      "./res/projects/Lanka Edu System/7.png",
+      "./res/projects/Lanka Edu System/8.png",
+      "./res/projects/Lanka Edu System/9.png",
+      "./res/projects/Lanka Edu System/10.png",
+      "./res/projects/Lanka Edu System/11.png",
+      "./res/projects/Lanka Edu System/12.png",
+      "./res/projects/Lanka Edu System/13.png",
+      "./res/projects/Lanka Edu System/14.png",
+      "./res/projects/Lanka Edu System/15.png",
+    ],
+    technologies: ["TypeScript", "Next.js", "React"],
+    link: "https://lanka-edu-system.vercel.app",
+    demoLink: "https://lanka-edu-system.vercel.app",
+    githubLink: "https://github.com/sandunmayadunne/lanka-edu-system.git",
+  },
 ];
 
 // Function to render skills with horizontal scroll
@@ -273,26 +343,23 @@ function renderSkills() {
           <h3><i class="${categoryInfo.icon}"></i> ${categoryInfo.title}</h3>
           <div class="horizontal-skills">
             ${skillsData[categoryKey]
-              .map(
-                (skill, index) => `
-                <div class="horizontal-skill-item" style="animation-delay: ${
-                  (catIndex + 1) * 0.1 + index * 0.1
-                }s">
-                  <div class="horizontal-skill-icon" style="color: ${
-                    skill.color
-                  }">
+        .map(
+          (skill, index) => `
+                <div class="horizontal-skill-item" style="animation-delay: ${(catIndex + 1) * 0.1 + index * 0.1
+            }s">
+                  <div class="horizontal-skill-icon" style="color: ${skill.color
+            }">
                     <i class="${skill.icon}"></i>
                   </div>
                   <div class="skill-details">
                     <span class="horizontal-skill-name">${skill.name}</span>
-                    <span class="horizontal-skill-level ${skill.level}">${
-                  skill.level
-                }</span>
+                    <span class="horizontal-skill-level ${skill.level}">${skill.level
+            }</span>
                   </div>
                 </div>
               `
-              )
-              .join("")}
+        )
+        .join("")}
           </div>
         `;
     skillsContainer.appendChild(categoryDiv);
@@ -344,18 +411,15 @@ function renderProjects(projectsToRender, containerId, isModal = false) {
 
     projectCard.innerHTML = `
             <div class="project-img-container">
-              <img src="${project.thumbnail}" alt="${project.title}" class="${
-      isModal ? "modal-project-img" : "project-img"
-    }" data-project-id="${project.id}">
-              <div class="${
-                isModal ? "modal-project-overlay" : "project-overlay"
-              }">
+              <img src="${project.thumbnail}" alt="${project.title}" class="${isModal ? "modal-project-img" : "project-img"
+      }" data-project-id="${project.id}">
+              <div class="${isModal ? "modal-project-overlay" : "project-overlay"
+      }">
                 <i class="fas fa-expand-alt"></i>
-                ${
-                  isModal
-                    ? `<div class="project-badge">Project ${index + 1}</div>`
-                    : ""
-                }
+                ${isModal
+        ? `<div class="project-badge">Project ${index + 1}</div>`
+        : ""
+      }
               </div>
             </div>
             <div class="${isModal ? "modal-project-info" : "project-info"}">
@@ -363,32 +427,32 @@ function renderProjects(projectsToRender, containerId, isModal = false) {
                 <span>${project.title}</span>
                 <i class="fas fa-arrow-up-right-from-square"></i>
               </h3>
-              <p class="${
-                isModal ? "modal-project-description" : "project-description"
-              }">${project.description}</p>
+              <p class="${isModal ? "modal-project-description" : "project-description"
+      }">${project.description}</p>
               <div class="${isModal ? "project-skills" : "project-tech"}">
                 ${project.technologies
-                  .map(
-                    (tech) =>
-                      `<span class="${
-                        isModal ? "project-skill-tag" : "tech-tag"
-                      }">${tech}</span>`
-                  )
-                  .join("")}
+        .map(
+          (tech) =>
+            `<span class="${isModal ? "project-skill-tag" : "tech-tag"
+            }">${tech}</span>`
+        )
+        .join("")}
               </div>
               <div class="project-buttons">
-                <button class="view-project-btn" data-project-id="${
-                  project.id
-                }">
-                  <i class="fas fa-images"></i> ${
-                    isModal ? "View Gallery" : "View Screenshots"
-                  }
+                <button class="view-project-btn" data-project-id="${project.id
+      }">
+                  <i class="fas fa-images"></i> ${isModal ? "Gallery" : "Screenshots"
+      }
                 </button>
-                <a href="${
-                  project.githubLink
-                }" class="view-project-btn" target="_blank">
+                <a href="${project.githubLink
+      }" class="view-project-btn" target="_blank">
                   <i class="fab fa-github"></i> Code
                 </a>
+                ${project.link !== "#" ? `
+                <a href="${project.link}" class="view-project-btn" target="_blank">
+                  <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+                ` : ""}
               </div>
             </div>
           `;
@@ -423,164 +487,164 @@ let autoSlideInterval = null;
 
 // Function to open project carousel
 function openProjectCarousel(projectId) {
-    const project = projects.find((p) => p.id === projectId);
-    if (!project) return;
+  const project = projects.find((p) => p.id === projectId);
+  if (!project) return;
 
-    currentProjectId = projectId;
-    currentSlideIndex = 0;
-    if (carouselProjectTitle) {
-      carouselProjectTitle.textContent = project.title;
-    }
+  currentProjectId = projectId;
+  currentSlideIndex = 0;
+  if (carouselProjectTitle) {
+    carouselProjectTitle.textContent = project.title;
+  }
 
-    // Clear existing slides and dots
-    if (!carouselSlides || !carouselDots) return;
-    carouselSlides.innerHTML = "";
-    carouselDots.innerHTML = "";
+  // Clear existing slides and dots
+  if (!carouselSlides || !carouselDots) return;
+  carouselSlides.innerHTML = "";
+  carouselDots.innerHTML = "";
 
-    // Add slides
-    project.screenshots.forEach((screenshot, index) => {
-        const slide = document.createElement("div");
-        slide.className = "carousel-slide";
-        slide.innerHTML = `
+  // Add slides
+  project.screenshots.forEach((screenshot, index) => {
+    const slide = document.createElement("div");
+    slide.className = "carousel-slide";
+    slide.innerHTML = `
             <img src="${screenshot}" alt="${project.title} - Screenshot ${index + 1}" loading="lazy">
             <div class="carousel-caption">Screenshot ${index + 1} of ${project.screenshots.length}</div>
         `;
-        carouselSlides.appendChild(slide);
+    carouselSlides.appendChild(slide);
 
-        // Add dot
-        const dot = document.createElement("button");
-        dot.className = `carousel-dot ${index === 0 ? "active" : ""}`;
-        dot.setAttribute("data-slide", index);
-        dot.addEventListener("click", () => goToSlide(index));
-        carouselDots.appendChild(dot);
-    });
+    // Add dot
+    const dot = document.createElement("button");
+    dot.className = `carousel-dot ${index === 0 ? "active" : ""}`;
+    dot.setAttribute("data-slide", index);
+    dot.addEventListener("click", () => goToSlide(index));
+    carouselDots.appendChild(dot);
+  });
 
-    // Update carousel position
-    updateCarousel();
+  // Update carousel position
+  updateCarousel();
 
-    // Open modal
-    projectCarouselModal?.classList.add("active");
-    document.body.style.overflow = "hidden";
+  // Open modal
+  projectCarouselModal?.classList.add("active");
+  document.body.style.overflow = "hidden";
 
-    // Start auto slide
-    startAutoSlide();
+  // Start auto slide
+  startAutoSlide();
 }
 
 // Function to update carousel position
 function updateCarousel() {
-    if (carouselSlides) {
-        carouselSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-    }
+  if (carouselSlides) {
+    carouselSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+  }
 
-    // Update active dot
-    document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentSlideIndex);
-    });
+  // Update active dot
+  document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlideIndex);
+  });
 }
 
 // Function to go to specific slide
 function goToSlide(index) {
-    const project = projects.find((p) => p.id === currentProjectId);
-    if (!project) return;
+  const project = projects.find((p) => p.id === currentProjectId);
+  if (!project) return;
 
-    currentSlideIndex = index;
-    if (currentSlideIndex < 0) {
-        currentSlideIndex = project.screenshots.length - 1;
-    } else if (currentSlideIndex >= project.screenshots.length) {
-        currentSlideIndex = 0;
-    }
+  currentSlideIndex = index;
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = project.screenshots.length - 1;
+  } else if (currentSlideIndex >= project.screenshots.length) {
+    currentSlideIndex = 0;
+  }
 
-    updateCarousel();
-    resetAutoSlide();
+  updateCarousel();
+  resetAutoSlide();
 }
 
 // Function to go to next slide
 function nextSlide() {
-    const project = projects.find((p) => p.id === currentProjectId);
-    if (!project) return;
+  const project = projects.find((p) => p.id === currentProjectId);
+  if (!project) return;
 
-    currentSlideIndex = (currentSlideIndex + 1) % project.screenshots.length;
-    updateCarousel();
+  currentSlideIndex = (currentSlideIndex + 1) % project.screenshots.length;
+  updateCarousel();
 }
 
 // Function to go to previous slide
 function prevSlide() {
-    const project = projects.find((p) => p.id === currentProjectId);
-    if (!project) return;
+  const project = projects.find((p) => p.id === currentProjectId);
+  if (!project) return;
 
-    currentSlideIndex = (currentSlideIndex - 1 + project.screenshots.length) % project.screenshots.length;
-    updateCarousel();
+  currentSlideIndex = (currentSlideIndex - 1 + project.screenshots.length) % project.screenshots.length;
+  updateCarousel();
 }
 
 // Function to start auto slide
 function startAutoSlide() {
-    if (autoSlideInterval) clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(nextSlide, 4000);
+  if (autoSlideInterval) clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(nextSlide, 4000);
 }
 
 // Function to reset auto slide timer
 function resetAutoSlide() {
-    if (autoSlideInterval) clearInterval(autoSlideInterval);
-    startAutoSlide();
+  if (autoSlideInterval) clearInterval(autoSlideInterval);
+  startAutoSlide();
 }
 
 // Event listeners for carousel navigation
 carouselPrev?.addEventListener("click", () => {
-    prevSlide();
-    resetAutoSlide();
+  prevSlide();
+  resetAutoSlide();
 });
 
 carouselNext?.addEventListener("click", () => {
-    nextSlide();
-    resetAutoSlide();
+  nextSlide();
+  resetAutoSlide();
 });
 
 // Close project carousel modal
 closeProjectModal?.addEventListener("click", () => {
-    projectCarouselModal?.classList.remove("active");
-    document.body.style.overflow = "auto";
-    
-    // Clear auto slide interval
-    if (autoSlideInterval) {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = null;
-    }
+  projectCarouselModal?.classList.remove("active");
+  document.body.style.overflow = "auto";
+
+  // Clear auto slide interval
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = null;
+  }
 });
 
 // Close carousel when clicking outside
 projectCarouselModal?.addEventListener("click", (e) => {
-    if (e.target === projectCarouselModal) {
-        projectCarouselModal.classList.remove("active");
-        document.body.style.overflow = "auto";
-        
-        // Clear auto slide interval
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
+  if (e.target === projectCarouselModal) {
+    projectCarouselModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+
+    // Clear auto slide interval
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = null;
     }
+  }
 });
 
 // Keyboard navigation for carousel
 document.addEventListener("keydown", (e) => {
-    if (!projectCarouselModal?.classList.contains("active")) return;
+  if (!projectCarouselModal?.classList.contains("active")) return;
 
-    if (e.key === "ArrowLeft") {
-        prevSlide();
-        resetAutoSlide();
-    } else if (e.key === "ArrowRight") {
-        nextSlide();
-        resetAutoSlide();
-    } else if (e.key === "Escape") {
-        projectCarouselModal.classList.remove("active");
-        document.body.style.overflow = "auto";
+  if (e.key === "ArrowLeft") {
+    prevSlide();
+    resetAutoSlide();
+  } else if (e.key === "ArrowRight") {
+    nextSlide();
+    resetAutoSlide();
+  } else if (e.key === "Escape") {
+    projectCarouselModal.classList.remove("active");
+    document.body.style.overflow = "auto";
 
-        // Clear auto slide interval
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
+    // Clear auto slide interval
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = null;
     }
+  }
 });
 
 // Certificate Detail Modal Variables
@@ -623,7 +687,7 @@ function openCertificateDetailModal(certificateId) {
     certificateDetailImage.alt = certificate.title;
   }
   if (certificateDetailIssuer) certificateDetailIssuer.textContent = certificate.issuer || "Not specified";
-  
+
   certificateDetailModal?.classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -804,7 +868,7 @@ const scrollObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
-      
+
       // If it's the skills container, animate the children with a stagger
       if (entry.target.id === "skillsContainer") {
         const skillItems = entry.target.querySelectorAll(".horizontal-skill-item");
@@ -816,7 +880,7 @@ const scrollObserver = new IntersectionObserver((entries) => {
       }
     } else {
       entry.target.classList.remove("visible");
-      
+
       // Reset children
       if (entry.target.id === "skillsContainer") {
         const skillItems = entry.target.querySelectorAll(".horizontal-skill-item");

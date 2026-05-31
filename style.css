@@ -1159,6 +1159,7 @@ header.scrolled {
 .project-buttons {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .view-project-btn {
@@ -1179,6 +1180,7 @@ header.scrolled {
   position: relative;
   overflow: hidden;
   flex: 1;
+  white-space: nowrap;
 }
 
 .view-project-btn::before {
@@ -2533,4 +2535,12 @@ footer {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Hide custom cursor on touch devices and small screens */
+@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
 }
